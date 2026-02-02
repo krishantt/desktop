@@ -4,13 +4,12 @@ import {
   getCurrentDate,
   getRandomQuote,
 } from "../../../../utils/terminalUtils";
-import personalData from "../../../../../personal-data.json";
 import type { CommandFunction } from "../types";
 
 export const systemCommands: { [key: string]: CommandFunction } = {
-  whoami: () => [personalData.username],
+  whoami: () => ["guest"],
 
-  pwd: () => [`/home/${personalData.username}/portfolio`],
+  pwd: () => ["/home/guest/desktop"],
 
   date: () => [getCurrentDate()],
 
@@ -44,7 +43,7 @@ export const systemCommands: { [key: string]: CommandFunction } = {
       `    │ Terminal: ${info.terminal}     │`,
       "    ╰─────────────────────────────╯",
       "",
-      "🚀 Welcome to my digital space!",
+      "🖥️ Welcome to Desktop Environment!",
     ];
   },
 
@@ -52,9 +51,9 @@ export const systemCommands: { [key: string]: CommandFunction } = {
     "PID   COMMAND",
     "1     /init",
     "42    terminal",
-    "100   portfolio-app",
-    "200   creativity.exe",
-    "300   coffee-break",
+    "100   desktop-env",
+    "200   ai-chat",
+    "300   pdf-viewer",
   ],
 
   echo: (args?: string[]) => {
@@ -64,9 +63,9 @@ export const systemCommands: { [key: string]: CommandFunction } = {
   fortune: () => [getRandomQuote()],
 
   exit: () => [
-    "Thanks for visiting! 👋",
+    "Thanks for using Desktop Environment! 👋",
     "",
-    "Connection to krishant.com.np closed.",
+    "Terminal session ended.",
     "",
   ],
 };

@@ -1,0 +1,225 @@
+.branding {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: auto;
+  user-select: none;
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.branding:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* Positioning */
+.branding-bottom-right {
+  bottom: 16px;
+  right: 16px;
+}
+
+.branding-bottom-left {
+  bottom: 16px;
+  left: 16px;
+}
+
+.branding-top-right {
+  top: 16px;
+  right: 16px;
+}
+
+.branding-top-left {
+  top: 16px;
+  left: 16px;
+}
+
+/* Content container */
+.branding-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Theme variants */
+.branding-dark .branding-content {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.branding-light .branding-content {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* Text styling */
+.branding-text {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Links */
+.branding-link {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  padding: 2px 4px;
+  margin: -2px -4px;
+}
+
+.branding-link:hover {
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.personal-link {
+  font-weight: 600;
+  color: #00ff88;
+}
+
+.personal-link:hover {
+  color: #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+}
+
+/* GitHub link */
+.branding-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  margin: -4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.github-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.github-link svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.github-link:hover svg {
+  opacity: 1;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .branding {
+    font-size: 11px;
+  }
+
+  .branding-content {
+    padding: 6px 10px;
+    gap: 6px;
+  }
+
+  .branding-bottom-right {
+    bottom: 12px;
+    right: 12px;
+  }
+
+  .branding-bottom-left {
+    bottom: 12px;
+    left: 12px;
+  }
+
+  .github-link svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .branding {
+    font-size: 10px;
+  }
+
+  .branding-content {
+    padding: 4px 8px;
+    gap: 4px;
+  }
+
+  .branding-bottom-right {
+    bottom: 8px;
+    right: 8px;
+  }
+
+  .branding-bottom-left {
+    bottom: 8px;
+    left: 8px;
+  }
+}
+
+/* Animation for initial load */
+@keyframes brandingFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+}
+
+.branding {
+  animation: brandingFadeIn 0.8s ease-out 2s both;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .branding-content {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .branding-dark .branding-content {
+    color: #ffffff;
+  }
+
+  .personal-link {
+    color: #00ff00;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .branding {
+    animation: none;
+    transition: none;
+  }
+
+  .branding:hover {
+    transform: none;
+  }
+
+  .github-link:hover {
+    transform: none;
+  }
+}

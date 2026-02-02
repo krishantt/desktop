@@ -1,6 +1,7 @@
 import React from "react";
 import type { DesktopIconProps } from "../../../types/window";
 import type { ResponsiveState } from "../../../hooks/useResponsive";
+import { Branding } from "../../branding";
 import "./Desktop.css";
 
 interface DesktopProps {
@@ -165,6 +166,9 @@ const Desktop: React.FC<DesktopProps> = ({
 
       {/* Windows and other content */}
       {children}
+
+      {/* Subtle branding */}
+      <Branding position="bottom-right" theme="dark" showGitHub={true} />
     </div>
   );
 };

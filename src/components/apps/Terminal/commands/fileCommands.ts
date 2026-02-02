@@ -1,21 +1,19 @@
 import { fileSystem } from "../../../../utils/terminalUtils";
-import personalData from "../../../../../personal-data.json";
 import type { CommandFunction } from "../types";
 
 export const fileCommands: { [key: string]: CommandFunction } = {
   ls: () => [
-    "Available sections:",
+    "Available applications and files:",
     "",
-    "about.txt         - Personal information",
-    "skills.txt        - Technical skills",
-    "experience.txt    - Work experience",
-    "projects.txt      - Personal projects",
-    "education.txt     - Educational background",
-    "certifications.txt- Certifications and courses",
-    "awards.txt        - Awards and achievements",
-    "leadership.txt    - Leadership experience",
-    "contact.txt       - Contact information",
-    "resume.pdf        - Resume document",
+    "terminal          - Terminal application",
+    "ai-chat           - AI Chat application",
+    "pdf-viewer        - PDF Viewer application",
+    "system.cfg        - System configuration",
+    "apps/             - Applications directory",
+    "documents/        - Documents directory",
+    "downloads/        - Downloads directory",
+    "",
+    "Use 'help' for available commands",
   ],
 
   cat: (args?: string[]) => {
@@ -25,46 +23,30 @@ export const fileCommands: { [key: string]: CommandFunction } = {
     }
 
     switch (file) {
-      case "about.txt":
-        // We'll need to import these from the main commands object or personal commands
+      case "system.cfg":
         return [
-          "Error: Command handler needs to be connected to personal commands",
+          "# Desktop Environment Configuration",
+          "",
+          "version=1.0.0",
+          "theme=dark",
+          "terminal_enabled=true",
+          "ai_chat_enabled=true",
+          "pdf_viewer_enabled=true",
+          "",
         ];
-      case "skills.txt":
+      case "README.md":
         return [
-          "Error: Command handler needs to be connected to personal commands",
-        ];
-      case "experience.txt":
-        return [
-          "Error: Command handler needs to be connected to personal commands",
-        ];
-      case "projects.txt":
-        return [
-          "Error: Command handler needs to be connected to personal commands",
-        ];
-      case "education.txt":
-        return [
-          "Error: Command handler needs to be connected to personal commands",
-        ];
-      case "certifications.txt":
-        return [
-          "Error: Command handler needs to be connected to personal commands",
-        ];
-      case "awards.txt":
-        return [
-          "Error: Command handler needs to be connected to personal commands",
-        ];
-      case "leadership.txt":
-        return [
-          "Error: Command handler needs to be connected to personal commands",
-        ];
-      case "contact.txt":
-        return [
-          "Error: Command handler needs to be connected to personal commands",
-        ];
-      case "resume.pdf":
-        return [
-          'Error: cannot display binary file. Use "resume" command instead.',
+          "# Desktop Environment",
+          "",
+          "Interactive web-based desktop environment with:",
+          "- Terminal application with command support",
+          "- AI Chat application for conversations",
+          "- PDF Viewer for document viewing",
+          "",
+          "Built with React, TypeScript, and modern web technologies.",
+          "",
+          "Created by Krishant Timilsina",
+          "GitHub: https://github.com/krishantt",
         ];
       default:
         return [`cat: ${file}: No such file or directory`];
@@ -72,20 +54,16 @@ export const fileCommands: { [key: string]: CommandFunction } = {
   },
 
   tree: () => {
-    const treeOutput = ["📁 Portfolio Structure:", ""];
-    Object.keys(fileSystem).forEach((item) => {
-      const file = fileSystem[item];
-      if (file.type === "directory") {
-        treeOutput.push(`📁 ${item}/`);
-        if (file.children) {
-          Object.keys(file.children).forEach((child) => {
-            treeOutput.push(`  📄 ${child}`);
-          });
-        }
-      } else {
-        treeOutput.push(`📄 ${item}`);
-      }
-    });
+    const treeOutput = ["📁 Desktop Environment Structure:", ""];
+    treeOutput.push("📁 home/guest/desktop/");
+    treeOutput.push("├── 📁 apps/");
+    treeOutput.push("│   ├── 📄 terminal");
+    treeOutput.push("│   ├── 📄 ai-chat");
+    treeOutput.push("│   └── 📄 pdf-viewer");
+    treeOutput.push("├── 📁 documents/");
+    treeOutput.push("├── 📁 downloads/");
+    treeOutput.push("├── 📄 system.cfg");
+    treeOutput.push("└── 📄 README.md");
     return treeOutput;
   },
 
@@ -117,10 +95,10 @@ export const fileCommands: { [key: string]: CommandFunction } = {
   },
 
   pwd: () => {
-    return [`/home/${personalData.username}/portfolio`];
+    return ["/home/guest/desktop"];
   },
 
   whoami: () => {
-    return [personalData.username];
+    return ["guest"];
   },
 };

@@ -1,4 +1,3 @@
-import { personalCommands } from "./personalCommands";
 import { systemCommands } from "./systemCommands";
 import { funCommands } from "./funCommands";
 import { fileCommands } from "./fileCommands";
@@ -23,45 +22,7 @@ export const createCommandRegistry = (
     windowControls
   );
 
-  // Create a special cat command that can access personal commands
-  const enhancedFileCommands = {
-    ...fileCommands,
-    cat: (args?: string[]) => {
-      const file = args?.[0];
-      if (!file) {
-        return ["Usage: cat <filename>"];
-      }
-
-      switch (file) {
-        case "about.txt":
-          return personalCommands.about();
-        case "skills.txt":
-          return personalCommands.skills();
-        case "experience.txt":
-          return personalCommands.experience();
-        case "projects.txt":
-          return personalCommands.projects();
-        case "education.txt":
-          return personalCommands.education();
-        case "certifications.txt":
-          return personalCommands.certifications();
-        case "awards.txt":
-          return personalCommands.awards();
-        case "leadership.txt":
-          return personalCommands.leadership();
-        case "contact.txt":
-          return personalCommands.contact();
-        case "resume.pdf":
-          return [
-            'Error: cannot display binary file. Use "resume" command instead.',
-          ];
-        default:
-          return [`cat: ${file}: No such file or directory`];
-      }
-    },
-  };
-
-  // Create enhanced fun commands with matrix functionality
+  // Enhanced fun commands with matrix functionality
   const enhancedFunCommands = {
     ...funCommands,
     matrix: () => {
@@ -71,38 +32,37 @@ export const createCommandRegistry = (
     },
   };
 
-  // Create enhanced personal commands with window controls access
-  const enhancedPersonalCommands = {
-    ...personalCommands,
-    resume: () => {
-      // Open PDF viewer window if available, otherwise open in new tab
+  // Add PDF command
+  const applicationCommands = {
+    pdf: () => {
       if (windowControls && windowControls.openPDF) {
         windowControls.openPDF();
         return [
-          "📄 Resume",
+          "📄 PDF Viewer",
           "",
-          "✅ Opening resume in PDF viewer...",
+          "✅ Opening PDF Viewer application...",
           "",
-          "You can also find my complete resume on LinkedIn:",
-          "https://linkedin.com/in/krishanttimil",
+          "You can view and interact with PDF documents here.",
         ];
       } else {
-        // Fallback to original resume command
-        return personalCommands.resume();
+        return [
+          "PDF Viewer not available in this session.",
+          "",
+          "The PDF Viewer application is not currently accessible.",
+        ];
       }
     },
   };
 
   return {
-    ...enhancedPersonalCommands,
     ...systemCommands,
     ...enhancedFunCommands,
-    ...enhancedFileCommands,
+    ...fileCommands,
     ...utilityCommands,
+    ...applicationCommands,
   };
 };
 
-export * from "./personalCommands";
 export * from "./systemCommands";
 export * from "./funCommands";
 export * from "./fileCommands";

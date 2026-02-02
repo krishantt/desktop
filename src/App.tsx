@@ -32,7 +32,7 @@ function App() {
   }, [openApp]);
 
   const handleOpenPDF = useCallback(() => {
-    openApp("pdf-viewer", "Resume.pdf", PDFViewerApp, <PDFIcon />);
+    openApp("pdf-viewer", "PDF Viewer", PDFViewerApp, <PDFIcon />);
   }, [openApp]);
 
   const handleOpenAIChat = useCallback(() => {
@@ -48,7 +48,7 @@ function App() {
   const handleIconClick = (iconId: string) => {
     if (iconId === "terminal") {
       handleOpenTerminal();
-    } else if (iconId === "resume-pdf") {
+    } else if (iconId === "pdf-viewer") {
       handleOpenPDF();
     } else if (iconId === "ai-chat") {
       handleOpenAIChat();
@@ -58,7 +58,7 @@ function App() {
   const handleIconDoubleClick = (iconId: string) => {
     if (iconId === "terminal") {
       handleOpenTerminal();
-    } else if (iconId === "resume-pdf") {
+    } else if (iconId === "pdf-viewer") {
       handleOpenPDF();
     } else if (iconId === "ai-chat") {
       handleOpenAIChat();
@@ -73,8 +73,8 @@ function App() {
       icon: <TerminalIcon />,
     },
     {
-      id: "resume-pdf",
-      label: "Resume.pdf",
+      id: "pdf-viewer",
+      label: "PDF Viewer",
       icon: <PDFIcon />,
     },
     {
@@ -188,7 +188,7 @@ function App() {
                   showHint={showFullDesktop}
                   hintText={
                     mobileFeatures.isMobile
-                      ? "Tap an icon to get started"
+                      ? "Tap an icon to open applications"
                       : "Press Space or Enter to open Terminal"
                   }
                   responsive={responsive}

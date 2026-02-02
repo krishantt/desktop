@@ -1,15 +1,15 @@
 {
-  "name": "Krishant Timilsina - Terminal Portfolio",
-  "short_name": "Krishant Portfolio",
-  "description": "Interactive terminal portfolio of Krishant Timilsina - Creative Software Engineer",
+  "name": "Desktop Environment",
+  "short_name": "Desktop Env",
+  "description": "Interactive web-based desktop environment with terminal, AI chat, and PDF viewer applications",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",
-  "theme_color": "#00ff00",
-  "orientation": "portrait-primary",
+  "theme_color": "#00ff88",
+  "orientation": "any",
   "scope": "/",
   "lang": "en",
-  "categories": ["portfolio", "developer", "software"],
+  "categories": ["productivity", "utilities", "desktop"],
   "icons": [
     {
       "src": "/favicon-16x16.png",
@@ -55,31 +55,31 @@
   ],
   "shortcuts": [
     {
-      "name": "About",
-      "short_name": "About",
-      "description": "Learn about Krishant",
-      "url": "/?command=about",
+      "name": "Terminal",
+      "short_name": "Terminal",
+      "description": "Open terminal application",
+      "url": "/?app=terminal",
       "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
     },
     {
-      "name": "Skills",
-      "short_name": "Skills",
-      "description": "View technical skills",
-      "url": "/?command=skills",
+      "name": "AI Chat",
+      "short_name": "AI Chat",
+      "description": "Open AI chat application",
+      "url": "/?app=ai-chat",
       "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
     },
     {
-      "name": "Projects",
-      "short_name": "Projects",
-      "description": "Explore projects",
-      "url": "/?command=projects",
+      "name": "PDF Viewer",
+      "short_name": "PDF",
+      "description": "Open PDF viewer",
+      "url": "/?app=pdf-viewer",
       "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
     },
     {
-      "name": "Contact",
-      "short_name": "Contact",
-      "description": "Get in touch",
-      "url": "/?command=contact",
+      "name": "Help",
+      "short_name": "Help",
+      "description": "View available commands",
+      "url": "/?command=help",
       "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
     }
   ],

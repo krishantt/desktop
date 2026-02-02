@@ -4,7 +4,6 @@ import type { WindowState, WindowControls } from "../../../types/window";
 import { useTerminal } from "./hooks/useTerminal";
 import MatrixBackground from "../../MatrixBackground";
 
-import personalData from "../../../../personal-data.json";
 import "./TerminalApp.css";
 
 interface TerminalAppProps {
@@ -41,7 +40,7 @@ const TerminalApp: React.FC<TerminalAppProps> = ({
     openAIChat: openAIChat,
   });
 
-  const terminalTitle = `${personalData.username}@portfolio - Terminal${
+  const terminalTitle = `guest@desktop - Terminal${
     windowState.isMinimized
       ? " (minimized)"
       : windowState.isMaximized
@@ -72,9 +71,7 @@ const TerminalApp: React.FC<TerminalAppProps> = ({
             <div key={index} className="terminal-line">
               {item.command && (
                 <div className="command-line">
-                  <span className="prompt">
-                    {personalData.username}@portfolio:~$
-                  </span>
+                  <span className="prompt">guest@desktop:~$</span>
                   <span className="command">{item.command}</span>
                 </div>
               )}
@@ -92,7 +89,7 @@ const TerminalApp: React.FC<TerminalAppProps> = ({
           ))}
 
           <div className="input-line">
-            <span className="prompt">{personalData.username}@portfolio:~$</span>
+            <span className="prompt">guest@desktop:~$</span>
             <input
               ref={inputRef}
               type="text"
