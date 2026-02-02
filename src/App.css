@@ -1,0 +1,522 @@
+/* App Component Styles */
+.app {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  background: #000000;
+}
+
+.app-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Global styles for the application */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+/* Ensure consistent styling across components */
+button {
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+/* Focus management */
+.app:focus-within {
+  outline: none;
+}
+
+/* Prevent text selection on UI elements */
+.titlebar-button,
+.desktop-icon,
+.window-titlebar {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Global animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile-first responsive design */
+.app.mobile {
+  font-size: 16px; /* Prevent zoom on iOS */
+  -webkit-text-size-adjust: 100%;
+}
+
+.app.portrait {
+  /* Portrait orientation adjustments */
+}
+
+.app.landscape {
+  /* Landscape orientation adjustments */
+}
+
+.app-container {
+  /* Enhanced touch handling */
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.app-container.mobile {
+  touch-action: manipulation;
+  overscroll-behavior: contain;
+  /* Prevent pull-to-refresh and overscroll */
+}
+
+/* Tablet specific styles */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .app-container {
+    padding: 8px;
+  }
+}
+
+/* Mobile responsive design */
+@media (max-width: 767px) {
+  .app {
+    font-size: 16px;
+  }
+
+  .app-container {
+    padding: 0;
+    overflow: visible;
+    height: 100vh;
+    width: 100vw;
+    touch-action: manipulation;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    font-size: 14px;
+  }
+
+  .app-container {
+    padding: 0;
+  }
+}
+
+/* Landscape phone adjustments */
+@media (max-width: 896px) and (orientation: landscape) and (max-height: 414px) {
+  .app-container {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .app {
+    background: #000000;
+  }
+}
+
+/* Responsive loading indicators */
+.loading-mobile {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: #00ff88;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  font-family: monospace;
+  text-align: center;
+  z-index: 10000;
+  backdrop-filter: blur(10px);
+}
+
+/* Touch feedback for interactive elements */
+@media (hover: none) and (pointer: coarse) {
+  .app-container * {
+    -webkit-tap-highlight-color: rgba(0, 255, 136, 0.2);
+  }
+
+  button,
+  .desktop-icon,
+  .taskbar-item,
+  .titlebar-button {
+    transition: transform 0.1s ease;
+  }
+
+  button:active,
+  .desktop-icon:active,
+  .taskbar-item:active,
+  .titlebar-button:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Prevent text selection on touch devices */
+@media (hover: none) {
+  .app-container {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  input,
+  textarea,
+  [contenteditable] {
+    -webkit-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
+  }
+}
+
+/* Safe area support for devices with notches */
+@supports (padding: max(0px)) {
+  .app-container {
+    padding-top: max(0px, env(safe-area-inset-top));
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Print styles */
+@media print {
+  .app-container {
+    overflow: visible;
+    height: auto;
+  }
+
+  .desktop,
+  .window {
+    position: relative !important;
+    transform: none !important;
+  }
+
+  .taskbar {
+    display: none !important;
+  }
+}
+
+/* Performance optimizations */
+.app-container {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.window {
+  will-change: transform, opacity;
+}
+
+/* Focus trap for modals and dialogs */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+
+/* Smooth scrolling where appropriate */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Taskbar for minimized windows */
+.taskbar {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.taskbar-item {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px;
+  min-width: 60px;
+  max-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  pointer-events: auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  animation: slideInFromRight 0.3s ease-out;
+}
+
+.taskbar-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateX(-4px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.taskbar-item:active {
+  transform: translateX(-2px) scale(1.02);
+}
+
+.taskbar-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.taskbar-icon .terminal-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.taskbar-icon .icon-text {
+  font-size: 12px;
+}
+
+.taskbar-label {
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Mobile taskbar styles */
+.taskbar.mobile {
+  /* Mobile-specific taskbar positioning */
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;
+  top: auto;
+  flex-direction: row;
+  gap: 12px;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  padding: 12px 20px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+}
+
+/* Tablet responsive taskbar */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .taskbar {
+    right: 16px;
+    gap: 8px;
+  }
+
+  .taskbar-item {
+    min-width: 60px;
+    max-width: 100px;
+    padding: 8px;
+  }
+}
+
+/* Mobile responsive taskbar */
+@media (max-width: 767px) {
+  .taskbar:not(.mobile) {
+    /* Override desktop taskbar for mobile */
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
+    top: auto;
+    flex-direction: row;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 12px 20px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .taskbar-item {
+    min-width: 56px;
+    max-width: 72px;
+    padding: 10px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .taskbar-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+
+  .taskbar-icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 3px;
+  }
+
+  .taskbar-icon .terminal-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .taskbar-icon .icon-text {
+    font-size: 12px;
+  }
+
+  .taskbar-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #ffffff;
+  }
+}
+
+@media (max-width: 480px) {
+  .taskbar,
+  .taskbar:not(.mobile) {
+    bottom: 16px;
+    padding: 10px 16px;
+    border-radius: 20px;
+    gap: 10px;
+  }
+
+  .taskbar-item {
+    min-width: 48px;
+    max-width: 64px;
+    padding: 8px;
+  }
+
+  .taskbar-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .taskbar-label {
+    font-size: 9px;
+  }
+}
+
+/* Accessibility and motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .taskbar-item {
+    animation: none;
+    transition: none;
+  }
+
+  .taskbar-item:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .taskbar-item {
+    background: #000000;
+    border: 2px solid #ffffff;
+  }
+
+  .taskbar-item:hover {
+    background: #333333;
+  }
+
+  .taskbar-label {
+    color: #ffffff;
+    text-shadow: none;
+  }
+}

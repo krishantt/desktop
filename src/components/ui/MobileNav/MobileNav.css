@@ -1,0 +1,440 @@
+/* Mobile Navigation Component Styles */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation Buttons */
+.nav-button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 12px;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 8px;
+}
+
+.nav-button:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-button.active {
+  color: #00ff88;
+}
+
+.nav-button:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Navigation Icons */
+.nav-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Home Button */
+.home-button {
+  flex-shrink: 0;
+}
+
+.home-button .nav-icon {
+  width: 28px;
+  height: 28px;
+}
+
+/* Running Apps Container */
+.running-apps {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 0 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.running-apps::-webkit-scrollbar {
+  display: none;
+}
+
+/* App Buttons */
+.app-button {
+  flex-shrink: 0;
+  position: relative;
+}
+
+.app-button.active {
+  color: #00ff88;
+}
+
+.app-button.minimized {
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 0.7;
+}
+
+/* Active Indicator */
+.active-indicator {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: #00ff88;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+}
+
+/* Apps Button */
+.apps-button {
+  flex-shrink: 0;
+}
+
+.apps-button.active {
+  color: #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+}
+
+/* Apps Drawer Overlay */
+.apps-drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  animation: drawerOverlayFadeIn 0.3s ease-out;
+}
+
+@keyframes drawerOverlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Apps Drawer */
+.apps-drawer {
+  background: rgba(20, 20, 20, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  max-width: 100vw;
+  max-height: 70vh;
+  overflow: hidden;
+  animation: drawerSlideUp 0.3s ease-out;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes drawerSlideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Apps Drawer Header */
+.apps-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.apps-drawer-header h3 {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.close-drawer-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+  min-width: 36px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-drawer-button:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Apps Grid */
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 16px;
+  padding: 20px 24px 32px;
+  overflow-y: auto;
+  max-height: calc(70vh - 80px);
+}
+
+/* App Grid Items */
+.app-grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  padding: 12px 8px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  touch-action: manipulation;
+  position: relative;
+  min-height: 80px;
+}
+
+.app-grid-item:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.app-grid-item.open {
+  color: #00ff88;
+  background: rgba(0, 255, 136, 0.1);
+}
+
+/* App Grid Icon */
+.app-grid-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.app-grid-icon .terminal-icon,
+.app-grid-icon .pdf-icon,
+.app-grid-icon .ai-chat-icon {
+  width: 36px;
+  height: 36px;
+}
+
+/* App Grid Label */
+.app-grid-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* App Status Dot */
+.app-status-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 6px;
+  height: 6px;
+  background: #00ff88;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(0, 255, 136, 0.6);
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+  .mobile-nav {
+    height: 72px;
+    padding: 0 16px;
+  }
+
+  .nav-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .running-apps {
+    gap: 8px;
+    margin: 0 12px;
+  }
+
+  .apps-drawer {
+    max-height: 75vh;
+  }
+
+  .apps-drawer-header {
+    padding: 16px 20px 12px;
+  }
+
+  .apps-drawer-header h3 {
+    font-size: 16px;
+  }
+
+  .apps-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 14px;
+    padding: 16px 20px 28px;
+  }
+
+  .app-grid-item {
+    padding: 10px 6px;
+    min-height: 80px;
+  }
+
+  .app-grid-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 6px;
+  }
+
+  .app-grid-icon .terminal-icon,
+  .app-grid-icon .pdf-icon,
+  .app-grid-icon .ai-chat-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .app-grid-label {
+    font-size: 11px;
+  }
+}
+
+/* Landscape phone adjustments */
+@media (max-width: 896px) and (orientation: landscape) and (max-height: 414px) {
+  .mobile-nav {
+    height: 64px;
+  }
+
+  .apps-drawer {
+    max-height: 85vh;
+  }
+
+  .apps-grid {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  }
+
+  .app-grid-item {
+    min-height: 60px;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .mobile-nav {
+    background: #000000;
+    border-top: 2px solid #ffffff;
+  }
+
+  .nav-button {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .nav-button.active {
+    border-color: #00ff88;
+  }
+
+  .apps-drawer {
+    background: #000000;
+    border: 2px solid #ffffff;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .nav-button,
+  .app-grid-item,
+  .apps-drawer,
+  .apps-drawer-overlay {
+    animation: none;
+    transition: none;
+  }
+
+  .nav-button:active,
+  .app-grid-item:active {
+    transform: none;
+  }
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+  .mobile-nav {
+    background: rgba(0, 0, 0, 0.98);
+  }
+
+  .apps-drawer {
+    background: rgba(10, 10, 10, 0.98);
+  }
+}
+
+/* Safe area support for devices with notches */
+@supports (padding: max(0px)) {
+  .mobile-nav {
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+    height: calc(80px + max(0px, env(safe-area-inset-bottom)));
+  }
+
+  @media (max-width: 480px) {
+    .mobile-nav {
+      height: calc(72px + max(0px, env(safe-area-inset-bottom)));
+    }
+  }
+
+  @media (max-width: 896px) and (orientation: landscape) and (max-height: 414px) {
+    .mobile-nav {
+      height: calc(64px + max(0px, env(safe-area-inset-bottom)));
+    }
+  }
+}

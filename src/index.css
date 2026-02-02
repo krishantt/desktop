@@ -1,0 +1,527 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #0a0a0a;
+  --terminal-bg: #1a1a1a;
+  --text-color: #00ff00;
+  --text-secondary: #ffffff;
+  --text-muted: #888888;
+  --accent-color: #00ff41;
+  --error-color: #ff4444;
+  --warning-color: #ffaa00;
+  --info-color: #44aaff;
+  --border-color: #333333;
+  --cursor-color: #00ff00;
+}
+
+body {
+  font-family:
+    "JetBrains Mono", "Fira Code", "Consolas", "Monaco", "Courier New",
+    monospace;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow: hidden;
+  height: 100vh;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+.terminal {
+  height: 100vh;
+  background-color: var(--terminal-bg);
+  padding: 20px;
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+.terminal::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.terminal::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+.terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.terminal-title {
+  color: var(--accent-color);
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.terminal-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.control-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.close {
+  background-color: #ff5f56;
+}
+.minimize {
+  background-color: #ffbd2e;
+}
+.maximize {
+  background-color: #27ca3f;
+}
+
+.terminal-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 20px;
+}
+
+.output-line {
+  margin-bottom: 4px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.output-line.command {
+  color: var(--text-secondary);
+}
+
+.output-line.success {
+  color: var(--accent-color);
+}
+
+.output-line.error {
+  color: var(--error-color);
+}
+
+.output-line.warning {
+  color: var(--warning-color);
+}
+
+.output-line.info {
+  color: var(--info-color);
+}
+
+.output-line.muted {
+  color: var(--text-muted);
+}
+
+.prompt {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.user {
+  color: var(--info-color);
+}
+
+.host {
+  color: var(--accent-color);
+}
+
+.path {
+  color: var(--warning-color);
+}
+
+.input-line {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: inherit;
+  flex: 1;
+  margin-left: 8px;
+  caret-color: var(--cursor-color);
+}
+
+.terminal-input::placeholder {
+  color: var(--text-muted);
+}
+
+.cursor {
+  display: inline-block;
+  background-color: var(--cursor-color);
+  width: 8px;
+  height: 18px;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.command-output {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.ascii-art {
+  color: var(--accent-color);
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.2;
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-x: auto;
+  margin: 10px 0;
+}
+
+.file-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.file-item {
+  color: var(--text-secondary);
+  padding: 4px 0;
+}
+
+.file-item.directory {
+  color: var(--info-color);
+}
+
+.file-item.executable {
+  color: var(--accent-color);
+}
+
+.file-item.hidden {
+  color: var(--text-muted);
+}
+
+.help-section {
+  margin: 15px 0;
+}
+
+.help-title {
+  color: var(--accent-color);
+  font-weight: bold;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 4px;
+}
+
+.help-command {
+  display: flex;
+  margin: 4px 0;
+}
+
+.help-command-name {
+  color: var(--info-color);
+  width: 150px;
+  font-weight: bold;
+}
+
+.help-command-desc {
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table th {
+  color: var(--accent-color);
+  font-weight: bold;
+  background-color: rgba(0, 255, 65, 0.1);
+}
+
+.table td {
+  color: var(--text-secondary);
+}
+
+.link {
+  color: var(--info-color);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: var(--accent-color);
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: bold;
+  margin: 0 4px;
+}
+
+.badge.tech {
+  background-color: rgba(0, 255, 65, 0.2);
+  color: var(--accent-color);
+}
+
+.badge.year {
+  background-color: rgba(68, 170, 255, 0.2);
+  color: var(--info-color);
+}
+
+.badge.status {
+  background-color: rgba(255, 170, 0, 0.2);
+  color: var(--warning-color);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-color), var(--info-color));
+  transition: width 0.3s ease;
+}
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--cursor-color);
+  animation:
+    typing 2s steps(30, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--cursor-color);
+  }
+}
+
+.matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.05;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+
+  .terminal {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .ascii-art {
+    font-size: 12px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow-x: auto;
+  }
+
+  .file-list {
+    grid-template-columns: 1fr;
+  }
+
+  .help-command {
+    flex-direction: column;
+  }
+
+  .help-command-name {
+    width: auto;
+    margin-bottom: 4px;
+  }
+
+  .table {
+    font-size: 14px;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 20px;
+  }
+
+  .terminal {
+    padding: 10px;
+    font-size: 18px;
+  }
+
+  .ascii-art {
+    font-size: 10px;
+    line-height: 1.1;
+  }
+
+  .terminal-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .table {
+    font-size: 16px;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.typewriter-cursor {
+  animation: blink 1s infinite;
+  color: var(--cursor-color);
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.tab-completions {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: rgba(0, 255, 65, 0.1);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.completions-title {
+  color: var(--accent-color);
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.completions-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.completion-item {
+  color: var(--text-secondary);
+  background-color: rgba(68, 170, 255, 0.2);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.completion-item.active {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+}
+
+.completion-item:hover {
+  background-color: rgba(68, 170, 255, 0.3);
+}

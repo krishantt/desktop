@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- Main Portfolio Page -->
+    <url>
+        <loc>https://krishant.com.np/</loc>
+        <lastmod>2025-01-31</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Terminal Commands as Virtual Pages -->
+    <url>
+        <loc>https://krishant.com.np/?command=about</loc>
+        <lastmod>2025-01-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://krishant.com.np/?command=skills</loc>
+        <lastmod>2025-01-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://krishant.com.np/?command=experience</loc>
+        <lastmod>2025-01-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://krishant.com.np/?command=projects</loc>
+        <lastmod>2025-01-31</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://krishant.com.np/?command=education</loc>
+        <lastmod>2025-01-31</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://krishant.com.np/?command=certifications</loc>
+        <lastmod>2025-01-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <url>
+        <loc>https://krishant.com.np/?command=awards</loc>
+        <lastmod>2025-01-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://krishant.com.np/?command=leadership</loc>
+        <lastmod>2025-01-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <url>
+        <loc>https://krishant.com.np/?command=contact</loc>
+        <lastmod>2025-01-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Resume Document -->
+    <url>
+        <loc>https://krishant.com.np/docs/resume.pdf</loc>
+        <lastmod>2025-01-31</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Important Files -->
+    <url>
+        <loc>https://krishant.com.np/manifest.json</loc>
+        <lastmod>2025-01-31</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+</urlset>

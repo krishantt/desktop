@@ -1,0 +1,54 @@
+# Robots.txt for Krishant Timilsina's Terminal Portfolio
+# https://krishant.com.np/robots.txt
+
+User-agent: *
+Allow: /
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Disallow common non-essential paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /.vercel/
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /build/
+
+# Allow important files
+Allow: /favicon.ico
+Allow: /favicon.svg
+Allow: /manifest.json
+Allow: /site.webmanifest
+Allow: /docs/resume.pdf
+
+# Sitemap location
+Sitemap: https://krishant.com.np/sitemap.xml
+
+# Crawl delay (optional - be respectful)
+Crawl-delay: 1

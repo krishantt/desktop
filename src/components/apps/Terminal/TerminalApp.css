@@ -1,0 +1,369 @@
+/* Terminal App Styles */
+.terminal-window {
+  background: #1e1e1e;
+}
+
+.terminal-window .window-content {
+  background: #0a0a0a;
+  position: relative;
+  overflow: auto;
+}
+
+.terminal {
+  position: relative;
+  background: #0a0a0a;
+  color: #00ff41;
+  font-family: "Fira Code", "Courier New", monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 16px;
+  overflow: visible;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.terminal:focus-within {
+  outline: none;
+}
+
+.terminal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.terminal-line {
+  margin-bottom: 8px;
+  word-wrap: break-word;
+}
+
+.command-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+
+.prompt {
+  color: #00ff41;
+  font-weight: bold;
+  white-space: nowrap;
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+  flex-shrink: 0;
+}
+
+.command {
+  color: #ffffff;
+  font-weight: normal;
+}
+
+.output {
+  margin-left: 0;
+  color: #cccccc;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.output.command {
+  color: #00ff41;
+}
+
+.output.error {
+  color: #ff4444;
+}
+
+.output.output {
+  color: #cccccc;
+}
+
+.output-line {
+  margin: 2px 0;
+  line-height: 1.4;
+}
+
+.input-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.command-input {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  flex: 1;
+  min-width: 0;
+}
+
+.command-input::selection {
+  background: rgba(0, 255, 65, 0.3);
+}
+
+/* Scrollbar styles */
+.terminal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+.terminal::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+  border: 1px solid #1a1a1a;
+}
+
+.terminal::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* Firefox scrollbar */
+.terminal {
+  scrollbar-width: thin;
+  scrollbar-color: #333 #1a1a1a;
+}
+
+/* Matrix background positioning */
+.terminal-window .matrix-background {
+  position: absolute;
+  top: 40px; /* Account for titlebar */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.terminal {
+  position: relative;
+  z-index: 1;
+}
+
+/* Window-specific overrides */
+.terminal-window {
+  min-width: 480px;
+  min-height: 360px;
+}
+
+/* Enhanced output formatting */
+.output-line a {
+  color: #4a9eff;
+  text-decoration: underline;
+}
+
+.output-line a:hover {
+  color: #66b3ff;
+  text-decoration: none;
+}
+
+/* Special formatting for certain outputs */
+.output-line:contains("█") {
+  font-weight: bold;
+  text-shadow: 0 0 4px currentColor;
+}
+
+/* Emoji and icon spacing */
+.output-line:contains("🌤️"),
+.output-line:contains("☕"),
+.output-line:contains("🎵"),
+.output-line:contains("🔴"),
+.output-line:contains("📚"),
+.output-line:contains("👤"),
+.output-line:contains("🗂️"),
+.output-line:contains("⚙️"),
+.output-line:contains("🎮"),
+.output-line:contains("🔧") {
+  padding: 2px 0;
+  line-height: 1.6;
+}
+
+/* Error message styling */
+.output.error .output-line:nth-child(3) {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .terminal-window {
+    min-width: 320px;
+  }
+
+  .terminal {
+    font-size: 18px;
+    padding: 16px;
+    min-height: 250px;
+  }
+
+  .prompt {
+    font-size: 16px;
+  }
+
+  .command-line {
+    gap: 8px;
+  }
+
+  .input-line {
+    gap: 8px;
+  }
+
+  .output {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .output-line {
+    line-height: 1.6;
+    margin: 4px 0;
+  }
+
+  /* Make ASCII art responsive */
+  .output pre,
+  .ascii-art {
+    font-size: 12px;
+    line-height: 1.2;
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal {
+    font-size: 20px;
+    padding: 14px;
+    min-height: 200px;
+  }
+
+  .prompt {
+    font-size: 18px;
+  }
+
+  .terminal-window {
+    min-width: 100%;
+  }
+
+  .output {
+    font-size: 18px;
+    line-height: 1.7;
+  }
+
+  .output-line {
+    line-height: 1.7;
+    margin: 6px 0;
+  }
+
+  /* Smaller ASCII art for small screens */
+  .output pre,
+  .ascii-art {
+    font-size: 10px;
+    line-height: 1.1;
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow-x: auto;
+    transform: scale(0.85);
+    transform-origin: left top;
+  }
+
+  .command-line {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}
+
+/* Focus states */
+.command-input:focus {
+  outline: none;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .terminal {
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .prompt {
+    color: #ffffff;
+    text-shadow: none;
+  }
+
+  .output.command {
+    color: #ffffff;
+  }
+
+  .output.error {
+    color: #ff0000;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .terminal-window,
+  .terminal,
+  .command-input {
+    transition: none;
+  }
+
+  .prompt {
+    text-shadow: none;
+  }
+}
+
+/* ASCII Art responsive styling */
+.output pre,
+.ascii-art,
+.output-line:has(█),
+.output-line:contains(██) {
+  font-family: monospace;
+  white-space: pre;
+  overflow-x: auto;
+  word-break: normal;
+}
+
+@media (max-width: 768px) {
+  .output pre,
+  .ascii-art,
+  .output-line:has(█),
+  .output-line:contains(██) {
+    font-size: 10px;
+    line-height: 1.1;
+    transform: scale(0.9);
+    transform-origin: left top;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+}
+
+@media (max-width: 480px) {
+  .output pre,
+  .ascii-art,
+  .output-line:has(█),
+  .output-line:contains(██) {
+    font-size: 8px;
+    line-height: 1;
+    transform: scale(0.7);
+    transform-origin: left top;
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow-x: hidden;
+  }
+}
+
+/* Dark theme adjustments */
+@media (prefers-color-scheme: dark) {
+  .terminal-window .window-titlebar {
+    background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+  }
+
+  .terminal {
+    background: #0f0f0f;
+  }
+}
